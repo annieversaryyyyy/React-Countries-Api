@@ -1,0 +1,21 @@
+.countriesWindow{
+    display: flex;
+}
+
+.panelLeft{
+    width: 50%;
+    height: 700px;
+    overflow-y: auto;
+    border: none;
+    border-radius: 10px;
+    margin: 10px 15px;
+    background: #e7e7fd;
+    color: #282c34;
+}
+
+.panelRight {
+    width: 50%;
+    margin: 10px 0;
+    border: 2px solid #e7e7fd;
+    border-radius: 10px;
+}
