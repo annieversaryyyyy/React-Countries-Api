@@ -8,22 +8,25 @@ import Preloader from "../../components/Preloader/Preloader";
 const DirectoryOfCountries = () => {
     const [countries,setCountries] = useState([]);
     const [selectedCountry, setSelectedCountry] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const getCountry = async () => {
             try {
                 const response = await axios.get("https://restcountries.com/v2/all");
                 setCountries(response.data);
+                setIsLoaded(true);
             } catch (e) {
                 console.error(e.message);
+                setIsLoaded(true);
             }
         };
         getCountry().catch(e => console.error(e));
     }, []);
 
+    if(!isLoaded) return <Preloader/>
     return (
         <>
-            <Preloader/>
             <div className="countriesWindow">
                 <div className="panelLeft" >
                     {countries.map(country => (
@@ -38,13 +41,10 @@ const DirectoryOfCountries = () => {
                 </div>
 
                 <div className="panelRight">
-
                         <FullInfo
-
                             name={selectedCountry}
                         />
                 </div>
-
             </div>
         </>
 
